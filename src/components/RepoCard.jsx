@@ -12,13 +12,10 @@ const RepoCard = ({ data }) => {
     return (
         <div className='card'>
             <div>RepoCard</div>
-            <p>{data.name}</p>
+            <h3>{data.name}</h3>
             <p>{data.description}</p>
             <p>{data.homepage}</p>
-            <p>{data.html_url}</p>
             <p>{data.stargazers_count}</p>
-            <p>{data.updated_at}</p>
-
 
             <Link to="/first-commit">
                 <button onClick={handleClick}>Select</button>

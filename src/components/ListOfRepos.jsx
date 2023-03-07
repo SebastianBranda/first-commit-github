@@ -10,11 +10,10 @@ const ListOfRepos = ({ searchInput }) => {
     const { data, isLoading, hasError } = useFetch(`${BASE_URL}${searchInput}`)
 
     useEffect(() => {
-        console.log(data?.items);
         setRepos(data?.items)
     }, [data])
 
-    const listOfRepos = repos?.map(repo => <RepoCard data={repo} />)
+    const listOfRepos = repos?.map(repo => <RepoCard data={repo} key={repo.id} />)
 
     return (
         <>
@@ -24,6 +23,8 @@ const ListOfRepos = ({ searchInput }) => {
                     <div>Loading</div> :
                     listOfRepos
                 }
+
+                {/* TODO: ADD PAGINATION */}
             </div>
         </>
     )
