@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { RepoContext } from '../context/RepoContext'
 import { useFetch } from '../hooks/useFetch'
+import { IconGithub } from '../utils/IconGithub'
+import { IconLink } from '../utils/IconLink'
+import { IconStar } from '../utils/IconStar'
 
 /*
 repo.commits_url.split("{")[0]
@@ -29,40 +32,48 @@ const FirstCommit = () => {
             "loading" :
             (
                 <>
-                    <p>{firstCommit.author.login}</p>
-                    <p>{firstCommit.author.html_url}</p>
-                    <p>{firstCommit.commit.message}</p>
-                    <p>{firstCommit.html_url}</p>
+                    <p>
+                        Made by: <img src={firstCommit.author.avatar_url}></img>
+                        <a href={firstCommit.author.html_url} target="_blank" rel="noopener noreferrer"> {firstCommit.author.login}</a>
+                    </p>
+                    <p>Message: {firstCommit.commit.message}</p>
+                    <p>
+                        <a href={firstCommit.html_url} target="_blank" rel="noopener noreferrer">Go to first commit</a>
+                    </p>
                 </>
             )
     )
 
     return (
-        <>
-            <div>FirstCommit Page</div>
-
-            <div>
-                <h3>{repo.name}</h3>
-                <p><span>Description: </span>{repo.description}</p>
+        <main>
+            <article>
+                <header>
+                    <h2>{repo.name}</h2>
+                    <p><span>Description: </span>{repo.description}</p>
+                </header>
                 <p><span>Fullname: </span>{repo.full_name}</p>
                 <p><span>Language: </span>{repo.language}</p>
                 <p><span>License: </span>{repo.license?.name || `Unknown`}</p>
-                <p><span>Date of creation: </span>{repo.created_at}</p>
-                <p><span>Last update: </span>{repo.updated_at}</p>
-            </div>
+                <p><span>Date of creation: </span>{repo.created_at.split("T").shift()}</p>
+                <p><span>Last update: </span>{repo.updated_at.split("T").shift()}</p>
 
-            <div>
-                {/* TODO: ADD ICONS FOR THESE */}
-                {repo.stargazers_count}
-                {repo.watchers_count}
-                {repo.homepage}
-                {repo.html_url}
-            </div>
+                <div>
+                    {/* TODO: ADD ICONS FOR THESE */}
+                    <IconStar />
+                    {repo.stargazers_count}
+                    {/* {repo.watchers_count} */}
+                    <a href={repo.homepage} target="_blank" rel="noopener noreferrer"><IconLink /></a>
+                    <a href={repo.html_url} target="_blank" rel="noopener noreferrer"><IconGithub /></a>
+                </div>
+            </article>
 
-            <div>
+            <article>
+                <header>
+                    <h3>First Commit</h3>
+                </header>
                 {renderFirstCommit}
-            </div>
-        </>
+            </article>
+        </main>
     )
 }
 

@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import FirstCommitSearchPage from './pages/FirstCommitSearchPage';
 import FirstCommitPage from './pages/FirstCommitPage';
 import SearchUserPage from "./pages/SeachUserPage"
@@ -10,7 +11,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <>
       <Navbar />
       {/* <SearchUserPage /> */}
       <RepoProvider>
@@ -20,8 +21,8 @@ function App() {
           <Route path="/*" element={<FirstCommitSearchPage />} />
         </Routes>
       </RepoProvider>
-
-    </div>
+      <Footer />
+    </>
   );
 }
 

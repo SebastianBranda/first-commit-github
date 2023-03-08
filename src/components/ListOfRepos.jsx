@@ -17,7 +17,6 @@ const ListOfRepos = ({ searchInput }) => {
 
     return (
         <>
-            <div>ListOfRepos</div>
             <div className="list-of-cards">
                 {isLoading ?
                     <div>Loading</div> :

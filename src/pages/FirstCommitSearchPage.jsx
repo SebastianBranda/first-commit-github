@@ -8,15 +8,13 @@ const FirstCommitSearchPage = () => {
 
     return (
         <>
-            <div>FirstCommitSearchPage</div>
             <SearchRepo setSearchInput={setSearchInput} />
 
             {searchInput === "" ?
-                <div>Seach somthing!</div>
+                <p>Seach something!</p>
                 :
                 <ListOfRepos searchInput={searchInput} />
             }
-
         </>
     )
 }

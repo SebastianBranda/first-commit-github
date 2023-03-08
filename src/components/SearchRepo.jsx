@@ -11,9 +11,8 @@ const SearchRepo = ({ setSearchInput }) => {
 
     return (
         <>
-            <div>SearchRepo</div>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="repo">Search a repo</label>
+                <label htmlFor="repo">Search: </label>
                 <input onChange={onInputChange} type="text" name="repo" id="repo" />
                 <button type="submit">Search</button>
             </form>
