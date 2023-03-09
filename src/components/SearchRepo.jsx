@@ -10,14 +10,14 @@ const SearchRepo = ({ setSearchInput }) => {
     }
 
     return (
-        <>
+        <div className='more-info'>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="repo">Search: </label>
-                <input onChange={onInputChange} type="text" name="repo" id="repo" />
+                {/* <label htmlFor="repo">Search: </label> */}
+                <input onChange={onInputChange} type="text" name="repo" id="repo" placeholder='Search on Github' />
                 <button type="submit">Search</button>
             </form>
-            <p>Take a look at the first commits of repos like: react or nextjs</p>
-        </>
+            <p className='search-description'>Take a look at the first commit of repos like: react or nextjs</p>
+        </div>
     )
 }
 

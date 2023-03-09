@@ -13,17 +13,21 @@ const RepoCard = ({ data }) => {
     return (
         <section className='card'>
             <header>
-                <h3>{data.name}</h3>
-                <p>{data.description}</p>
+                <h2>{data.name}</h2>
+                <p className='text-muted'>{data.description}</p>
             </header>
+
             <p>
                 <a href={data.homepage} target="_blank" rel="noopener noreferrer">{data.homepage}</a>
             </p>
-            <p><IconStar /> Stars: {data.stargazers_count}</p>
 
-            <Link to="/first-commit">
-                <button onClick={handleClick}>Select</button>
-            </Link>
+            <div className='more-info d-flex-row'>
+                <p><IconStar /> Stars: {data.stargazers_count}</p>
+
+                <Link to="/first-commit">
+                    <button onClick={handleClick}>Seach first commit</button>
+                </Link>
+            </div>
         </section >
     )
 }

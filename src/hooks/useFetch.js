@@ -1,29 +1,18 @@
 import { useEffect, useState } from "react";
 
 export const useFetch = (url) => {
-    const [state, setState] = useState({
-        data: null,
-        headerLink: null,
-        isLoading: true,
-        hasError: null,
-    })
+    const [data, setData] = useState(null)
+    const [headerLink, setHeaderLink] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
+    const [hasError, setHasError] = useState(null)
 
     const getFetch = async () => {
-        setState({
-            ...state,
-            isLoading: true,
-        });
-
+        setIsLoading(true)
         const resp = await fetch(url);
-        const headerLink = resp.headers.get("link")
-        const data = await resp.json();
-
-        setState({
-            data,
-            headerLink,
-            isLoading: false,
-            hasError: null,
-        });
+        setHeaderLink(resp.headers.get("link"))
+        const dataResp = await resp.json();
+        setData(dataResp)
+        setIsLoading(false)
     }
 
     useEffect(() => {
@@ -32,9 +21,9 @@ export const useFetch = (url) => {
     }, [url])
 
     return {
-        data: state.data,
-        headerLink: state.headerLink,
-        isLoading: state.isLoading,
-        hasError: state.hasError,
+        data,
+        headerLink,
+        isLoading,
+        hasError,
     };
 }

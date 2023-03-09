@@ -1,55 +1,181 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  height: 100%;
+  border: 0;
+  background-color: #e9f4ff;
+  font-family: 'Roboto', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  justify-content: space-between;
+  margin: 0;
 }
 
 div {
   margin: 10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+}
+
+img {
+  margin: 0 10px;
+  max-width: 3rem;
+  border-radius: 50%;
+}
+
+form {
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form input {
+  padding: 0.5rem 1rem;
+  border: 1px solid #2C1C6B;
+  border-radius: 12px;
+  margin: 0.8rem;
+  width: 100%;
+}
+
+form input:focus {
+  outline: none;
+}
+
+form button {
+  width: 100%;
+}
+
+.search-description {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.container {
+  margin: 10px auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  background-color: #fff;
+  border-radius: 1.5rem;
 }
 
 .list-of-cards {
+  margin: 1rem auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
 .card {
-  min-width: 300px;
-  max-width: 400px;
+  margin: 10px auto;
+  padding: 16px;
+  width: 100%;
+  border: 1px solid #2C1C6B;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card h2 {
+  font-size: 2rem;
+}
+
+.card header {
+  margin-bottom: 1rem;
+}
+
+.text-muted {
+  font-family: 'Changa', sans-serif;
+  color: #444;
+  line-height: 1.3;
+}
+
+.icon-star {
+  color: goldenrod;
+}
+
+.d-flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.more-info button {
+  padding: 0.5rem 1rem;
+  background-color: #2C1C6B;
+  color: #fff;
+  border: 1px solid #2C1C6B;
+  border-radius: 12px;
+}
+
+.more-info button:hover {
+  cursor: pointer;
+}
+
+.info-repo,
+.info-first-commit {
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+.info-repo header {
+  text-align: center;
+  margin: 1rem 0 2rem 0;
+}
+
+.info-repo header h2 {
+  font-size: 3rem;
+}
+
+.info-repo header p {
+  font-size: 1.5rem;
+}
+
+.info-repo p span,
+.info-first-commit p span {
+  font-weight: bold;
+}
+
+.info-first-commit h3 {
+  font-size: 2rem;
+}
+
+.info-first-commit-author {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+@media (min-width: 1000px) {
+  form {
+    flex-direction: row;
+  }
+
+  form input,
+  form button {
+    width: auto;
+  }
+
+  .container {
+    max-width: 900px;
+  }
+
+  .card {
+    width: 48%;
+  }
 }
