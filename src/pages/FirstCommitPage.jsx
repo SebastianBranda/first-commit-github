@@ -54,8 +54,8 @@ const FirstCommit = () => {
                 <>
                     <p className='info-first-commit-author'>
                         <span>Made by: </span>
-                        <img src={firstCommit.author.avatar_url}></img>
-                        <a href={firstCommit.author.html_url} target="_blank" rel="noopener noreferrer">{firstCommit.author.login}</a>
+                        <img src={firstCommit.author?.avatar_url}></img>
+                        <a href={firstCommit.author?.html_url} target="_blank" rel="noopener noreferrer">{firstCommit.author?.login}</a>
                     </p>
                     <p><span>Message:  </span> {firstCommit.commit.message}</p>
 
