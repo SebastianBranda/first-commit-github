@@ -10,7 +10,7 @@ const SearchRepo = ({ setSearchInput }) => {
     }
 
     return (
-        <div className='more-info'>
+        <div className='main-repo-search'>
             <form onSubmit={handleSubmit}>
                 {/* <label htmlFor="repo">Search: </label> */}
                 <input onChange={onInputChange} type="text" name="repo" id="repo" placeholder='Search on Github' />

@@ -22,7 +22,7 @@ const RepoCard = ({ data }) => {
             </p>
 
             <div className='more-info'>
-                <p><IconStar /> Stars: {data.stargazers_count}</p>
+                <p className='repo-stars'><IconStar /> Stars: {data.stargazers_count}</p>
 
                 <Link to="/first-commit">
                     <button onClick={handleClick}>Seach first commit</button>
