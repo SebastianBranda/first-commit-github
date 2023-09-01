@@ -88,7 +88,14 @@ form button {
 }
 
 .card h2 {
-  font-size: 2rem;
+  /* font-size: 2rem; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card h2:hover {
+  overflow: visible;
 }
 
 .card header {
