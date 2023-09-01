@@ -59,8 +59,8 @@ const FirstCommit = () => {
                     </p>
                     <p><span>Message:  </span> {firstCommit.commit.message}</p>
 
-                    <div className='d-flex-row more-info'>
-                        <span className='d-flex-row'>
+                    <div className='more-info'>
+                        <span className='repo-stars'>
                             <IconStar />
                             {repo.stargazers_count}
                         </span>

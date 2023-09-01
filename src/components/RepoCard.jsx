@@ -21,7 +21,7 @@ const RepoCard = ({ data }) => {
                 <a href={data.homepage} target="_blank" rel="noopener noreferrer">{data.homepage}</a>
             </p>
 
-            <div className='more-info d-flex-row'>
+            <div className='more-info'>
                 <p><IconStar /> Stars: {data.stargazers_count}</p>
 
                 <Link to="/first-commit">

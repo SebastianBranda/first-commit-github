@@ -19,7 +19,7 @@ body {
 }
 
 div {
-  margin: 10px;
+  margin: 2px;
   /* border: 1px solid black; */
 }
 
@@ -74,11 +74,13 @@ form button {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .card {
   margin: 10px auto;
   padding: 16px;
+  min-width: 350px;
   width: 100%;
   border: 1px solid #2C1C6B;
   border-radius: 1.5rem;
@@ -112,15 +114,28 @@ form button {
   color: goldenrod;
 }
 
-.d-flex-row {
+.more-info {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.repo-stars {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+}
+
+.more-info a {
+  display: flex;
+  align-items: center;
 }
 
 .more-info button {
   padding: 0.5rem 1rem;
+  height: 100%;
+  margin-left: 2px;
   background-color: #2C1C6B;
   color: #fff;
   border: 1px solid #2C1C6B;
