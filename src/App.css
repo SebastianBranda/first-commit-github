@@ -124,11 +124,12 @@ form button {
   background-color: #2C1C6B;
   color: #fff;
   border: 1px solid #2C1C6B;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .more-info button:hover {
   cursor: pointer;
+  background-color: #3b2b7a;
 }
 
 .info-repo,
@@ -145,7 +146,10 @@ form button {
 }
 
 .info-repo header h2 {
-  font-size: 3rem;
+  font-size: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .info-repo header p {

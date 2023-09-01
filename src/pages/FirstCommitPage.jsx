@@ -65,7 +65,7 @@ const FirstCommit = () => {
                             {repo.stargazers_count}
                         </span>
                         {/* {repo.watchers_count} */}
-                        <a href={repo.homepage} target="_blank" rel="noopener noreferrer"><IconLink /></a>
+                        {repo.homepage && <a href={repo.homepage} target="_blank" rel="noopener noreferrer"><IconLink /></a>}
                         <a href={repo.html_url} target="_blank" rel="noopener noreferrer"><IconGithub /></a>
                         <a href={firstCommit.html_url} target="_blank" rel="noopener noreferrer">
                             <button>
