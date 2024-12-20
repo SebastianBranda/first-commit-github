@@ -16,7 +16,7 @@ function App() {
       {/* <SearchUserPage /> */}
       <RepoProvider>
         <Routes>
-          <Route path="/first-commit" element={<FirstCommitPage />} />
+          <Route path="/first-commit/*" element={<FirstCommitPage />} />
           <Route path="/search-user" element={<SearchUserPage />} />
           <Route path="/*" element={<FirstCommitSearchPage />} />
         </Routes>
