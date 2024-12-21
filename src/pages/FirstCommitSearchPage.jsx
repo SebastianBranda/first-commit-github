@@ -4,9 +4,12 @@ import SearchRepo from "../components/SearchRepo";
 import { RepoContext } from "../context/RepoContext";
 
 import { BASE_URL_REPO } from "../utils/constants";
+import headerLinkParser from "../utils/headerLinkParser";
+import Pagination from "../components/Pagination";
 
 const FirstCommitSearchPage = () => {
   const [searchInput, setSearchInput] = useState("");
+  const [paginationLinks, setPaginationLinks] = useState("");
   const {
     repoInputSearch,
     setRepoInputSearch,
@@ -21,7 +24,15 @@ const FirstCommitSearchPage = () => {
       setIsLoadingRepos(true);
       setRepoInputSearch(searchInput);
       fetch(`${BASE_URL_REPO}${searchInput}`)
-        .then((resp) => resp.json())
+        .then((resp) => {
+          let myHeaders = resp.headers.get("link");
+          if (myHeaders) {
+            setPaginationLinks(headerLinkParser(myHeaders));
+          } else {
+            setPaginationLinks("");
+          }
+          return resp.json();
+        })
         .then((myData) => {
           setListOfRepos(myData?.items);
           setIsLoadingRepos(false);
@@ -38,6 +49,7 @@ const FirstCommitSearchPage = () => {
       ) : (
         <ListOfRepos list={listOfRepos} isLoading={isLoadingRepos} />
       )}
+      {/* {paginationLinks && <Pagination />} */}
     </div>
   );
 };
