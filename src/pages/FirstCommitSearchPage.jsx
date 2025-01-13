@@ -8,26 +8,30 @@ import headerLinkParser from "../utils/headerLinkParser";
 import Pagination from "../components/Pagination";
 
 const FirstCommitSearchPage = () => {
-  const [searchInput, setSearchInput] = useState("");
-  const [paginationLinks, setPaginationLinks] = useState("");
   const {
     repoInputSearch,
     setRepoInputSearch,
+    repoSearchPage,
+    setRepoSearchPage,
     listOfRepos,
     setListOfRepos,
     isLoadingRepos,
     setIsLoadingRepos,
+    paginationLinks,
+    setPaginationLinks,
   } = useContext(RepoContext);
+
+  const [searchInput, setSearchInput] = useState(repoInputSearch);
 
   useEffect(() => {
     if (searchInput !== "" && searchInput !== repoInputSearch) {
       setIsLoadingRepos(true);
       setRepoInputSearch(searchInput);
-      fetch(`${BASE_URL_REPO}${searchInput}`)
+      fetch(`${BASE_URL_REPO}${searchInput}&page=${repoSearchPage}`)
         .then((resp) => {
-          let myHeaders = resp.headers.get("link");
-          if (myHeaders) {
-            setPaginationLinks(headerLinkParser(myHeaders));
+          const linkHeaders = resp.headers.get("link");
+          if (linkHeaders) {
+            setPaginationLinks(headerLinkParser(linkHeaders));
           } else {
             setPaginationLinks("");
           }
@@ -40,6 +44,26 @@ const FirstCommitSearchPage = () => {
     }
   }, [searchInput]);
 
+  useEffect(() => {
+    if (searchInput !== "" && searchInput == repoInputSearch) {
+      fetch(`${BASE_URL_REPO}${searchInput}&page=${repoSearchPage}`)
+        .then((resp) => {
+          const linkHeaders = resp.headers.get("link");
+          if (linkHeaders) {
+            setPaginationLinks(headerLinkParser(linkHeaders));
+          } else {
+            setPaginationLinks("");
+          }
+          return resp.json();
+        })
+        .then((myData) => {
+          setListOfRepos(myData?.items);
+          setIsLoadingRepos(false);
+        });
+      window.scroll({ top: 0, behavior: "smooth" });
+    }
+  }, [repoSearchPage]);
+
   return (
     <div className="container">
       <SearchRepo setSearchInput={setSearchInput} />
@@ -49,7 +73,7 @@ const FirstCommitSearchPage = () => {
       ) : (
         <ListOfRepos list={listOfRepos} isLoading={isLoadingRepos} />
       )}
-      {/* {paginationLinks && <Pagination />} */}
+      {paginationLinks && <Pagination paginationLinks={paginationLinks} />}
     </div>
   );
 };
